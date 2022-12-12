@@ -4,13 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import br.com.silas.orgs.R
 import br.com.silas.orgs.databinding.ProductItemBinding
 import br.com.silas.orgs.extensions.tryToLoadImage
 import br.com.silas.orgs.models.Product
-import coil.load
 import java.text.NumberFormat
 import java.util.*
 
@@ -24,21 +21,21 @@ class ProductsListAdapter(
     class ViewHolder(private val binding: ProductItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             val name = binding.productItemName
-            name.text = product.nome
+            name.text = product.name
             val description = binding.productItemDescription
-            description.text = product.descricao
+            description.text = product.description
             val value = binding.productItemValue
             val currencyFormat: NumberFormat = NumberFormat.getCurrencyInstance(Locale("pt", "br"))
-            value.text = currencyFormat.format(product.valor)
+            value.text = currencyFormat.format(product.value)
 
-            val visibility = if (product.imagem != null) {
+            val visibility = if (product.imageUrl != null) {
                 View.VISIBLE
             } else {
                 View.GONE
             }
 
             binding.imageView.visibility = visibility
-            binding.imageView.tryToLoadImage(product.imagem)
+            binding.imageView.tryToLoadImage(product.imageUrl)
         }
     }
 

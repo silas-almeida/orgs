@@ -1,19 +1,12 @@
 package br.com.silas.orgs.ui.activity
 
-import android.app.Activity
-import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import br.com.silas.orgs.R
 import br.com.silas.orgs.dao.ProductsDao
 import br.com.silas.orgs.databinding.ActivityProductFormBinding
-import br.com.silas.orgs.databinding.ImageFormBinding
 import br.com.silas.orgs.extensions.tryToLoadImage
 import br.com.silas.orgs.models.Product
 import br.com.silas.orgs.ui.dialog.FormImageDialog
-import coil.load
 import java.math.BigDecimal
 
 class ProductFormActivity : AppCompatActivity() {
@@ -60,7 +53,7 @@ class ProductFormActivity : AppCompatActivity() {
             BigDecimal(valueText.toString())
         }
 
-        return Product(nome = name, descricao = description, valor = value, imagem = url)
+        return Product(name = name, description = description, value = value, imageUrl = url)
 
     }
 }
